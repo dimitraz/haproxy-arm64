@@ -1,4 +1,4 @@
-FROM jefby/centos-arm64
+FROM project31/aarch64-centos:7
 
 # Upgrade system, install wget and tar
 RUN yum -y update && yum clean all \
@@ -27,6 +27,5 @@ RUN tar -xvf /usr/local/haproxy/haproxy.tar.gz -C /usr/local/haproxy --strip-com
 # Copy configuration file
 WORKDIR /usr/local/haproxy
 COPY haproxy.cfg /usr/local/haproxy/haproxy.cfg
-
 
 CMD ["./haproxy", "-f", "/usr/local/haproxy/haproxy.cfg"]
